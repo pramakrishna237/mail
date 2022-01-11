@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<form action="mail/contactmail.php" method="POST" id="leadForm" class="wpcf7-form">
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<label class="form-group"> Full Name <sup>*</sup></label>
+					<input type="text" name="name" value="" size="40" class="form-control" aria-required="true" aria-invalid="false" required>
+				</div>
+				<div class="col-md-6 uremailmt">
+					<label class="form-group"> Email <sup>*</sup></label>
+					<input type="email" name="email" value="" size="40" class="form-control" aria-required="true" aria-invalid="false" required>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-6 uremailmt">
+					<label class="form-group"> Phone Number <sup>*</sup> </label>
+					<input type="number" name="phone" value="" size="40" maxlength="10" class="form-control true" aria-required="true" aria-invalid="false" required>
+				</div>
+				<div class="col-md-6 newsu">
+					<label class="form-group">Service<span> *</span></label>
+					<select class="form-control" name="service" id="ddService" data-msg-required="Please enter the service." required>
+						<option value="">Select</option>
+						<option value="ITServices">IT Services</option>
+						<option value="InternshipPrograms">Internship Programs</option>
+						<option value="EntrepreneurshipServices">Entrepreneurship Services</option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12 subj">
+					<label class="form-group"> Subject </label>
+					<input type="text" name="subject" value="" size="40" maxlength="25" class="form-control true" aria-required="true" aria-invalid="false">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 mesg">
+					<label class="form-group">Message *</label>
+					<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="textmessage" id="txtMessage" required></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 check">
+					<div class="form-group">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="gridCheck" name="check">
+							<label class="form-check-label" for="gridCheck">
+								I have read and agreed to the terms and conditions.
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<p>
+						<input type="submit" name="contact_submit" value="Submit" class="wpcf7-form-control wpcf7-submit">
+						<span style="color:green"></span> </p>
+				</div>
+			</div>
+
+
+		</form>
+
+
+	</div>
+
+</body>
+
+</html>

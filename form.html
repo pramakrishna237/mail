@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		input#symbol {
+			margin-top: 20px;
+			float: right;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+
+			<form class="">
+				<div class="col-md-3">
+					<label class="form-group">Amount</label>
+					<input type="number" class="form-control" id="amount" />
+				</div>
+				<div class="col-md-3">
+					<label class="form-group">From</label>
+					<select class="form-control" id="currency-1" required>
+						<option>INA</option>
+						<option>ESD</option>
+						<option>USD</option>
+					</select>
+				</div>
+
+				<div class="col-md-3">
+					<label class="form-group" id="to">To</label>
+					<select class="form-control" id="currency-2" required>
+						<option>ESD</option>
+						<option>USD</option>
+						<option>INA</option>
+					</select>
+
+				</div>
+			</form>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8">
+				<div class="result">
+					<p>
+						<span class="given-amount"></span>
+						<span class="base-currency"></span>
+						<span class="final-result"></span>
+						<span class="second-currency"></span>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 mt-5">
+				<button id="symbol" class="btn calculate-btn btn-primary mb-2">convert</button>
+			</div>
+		</div>
+
+
+	</div>
+	<script>
+		var crrncy = {
+			'ESD': {
+				'INA': 4.15,
+				'USD': 0.83
+			},
+			'USD': {
+				'PLN': 3.45,
+				'ESD': 1.2
+			}
+		}
+		var btn = document.querySelector('.calculate-btn');
+		var baseCurrencyInput = document.getElementById('currency-1');
+		var secondCurrencyInput = document.getElementById('currency-2');
+		var amountInput = document.getElementById('amount');
+		var toShowAmount = document.querySelector('.given-amount');
+		var toShowBase = document.querySelector('.base-currency');
+		var toShowSecond = document.querySelector('.second-currency');
+		var toShowResult = document.querySelector('.final-result');
+
+		function convertCurrency(event) {
+			event.preventDefault();
+			var amount = amountInput.value;
+			var from = baseCurrencyInput.value;
+			var to = secondCurrencyInput.value;
+			var result = 0;
+
+			try {
+				if (from == to) {
+					result = amount;
+				} else {
+					result = amount * crrncy[from][to];
+				}
+			} catch (err) {
+				result = amount * (1 / crrncy[to][from]);
+			}
+
+			toShowAmount.innerHTML = amount;
+			toShowBase.textContent = from + ' = ';
+			toShowSecond.textContent = to;
+			toShowResult.textContent = result;
+		}
+
+		btn.addEventListener('click', convertCurrency);
+
+	</script>
+</body>
+
+</html>
